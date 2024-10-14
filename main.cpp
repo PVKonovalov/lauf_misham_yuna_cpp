@@ -68,11 +68,18 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    VideoCapture cap;
-    if (file.empty())
-        cap.open(camera);
-    else
-        cap.open(file.c_str());
+
+
+
+    auto pipeline = "libcamerasrc camera-name=/base/axi/pcie@120000/rp1/i2c@88000/ov5647@36 ! video/x-raw,width=640,height=480,framerate=10/1,format=RGBx ! videoconvert ! videoscale ! video/x-raw,width=640,height=480,format=BGR ! appsink";
+
+    VideoCapture cap(pipeline, cv::CAP_GSTREAMER);
+
+
+    // if (file.empty())
+    //     cap.open(camera);
+    // else
+    //     cap.open(file.c_str());
     if (!cap.isOpened())
     {
         cout << "Can not open video stream: '" << (file.empty() ? "<camera>" : file) << "'" << endl;

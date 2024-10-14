@@ -32,5 +32,6 @@
 *.app
 
 cmake-build-debug/
+build/
 lauf_misham_yuna_cpp
 
