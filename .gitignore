@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+cmake-build-debug/
+lauf_misham_yuna_cpp
+
